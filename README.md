@@ -31,7 +31,7 @@ const connection = joinVoiceChannel({
   selfMute: false
 });
 connection.receiver.speaking.on("start", (userId) => {
-  this.transcriber.listen(connection.receiver, userId, this.client.users.cache.get(userId)).then((data) => {
+  transcriber.listen(connection.receiver, userId, client.users.cache.get(userId)).then((data) => {
     if (!data.transcript.text) return;
     let text = data.transcript.text;
     let user = data.user;
