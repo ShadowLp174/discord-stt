@@ -1,6 +1,6 @@
 {
   "name": "discord-speech-to-text",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A speech to text module for the discord voice implementation",
   "main": "transcriber.js",
   "scripts": {
@@ -15,5 +15,14 @@
     "request": "^2.88.2",
     "underscore": "^1.13.2",
     "util": "^0.12.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shadowlp174/discord-stt.git"
+  },
+  "homepage": "https://github.com/shadowlp174/discord-stt",
+  "bugs": {
+    "url" : "https://github.com/shadowlp174/discord-stt/issues",
+    "email" : "shadowlp174@gmail.com"
   }
 }
