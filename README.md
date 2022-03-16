@@ -9,12 +9,20 @@ To use the tool you need
 - to know how to [set up a Discord bot](https://discordjs.guide/) which can interact with the [voice channels](https://discordjs.guide/voice/) created using Node.JS
 - a free [API key for wit.ai](https://wit.ai)
 
+## Installation
+
+Simply run
+```
+npm install discord-text-to-speech
+```
+Happy coding!
+
 ## Usage
 
 First, you need to import the module and create a Transcriber instance with your API key as shown here:
 
 ``` JavaScript
-const Transcriber = require("path-to-file/transcriber.js");
+const Transcriber = require("discord-speech-to-text");
 
 const transcriber = new Transcriber(WITAIKEY);
 ```
