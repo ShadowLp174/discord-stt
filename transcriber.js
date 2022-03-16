@@ -36,26 +36,32 @@ class Transcriber {
   }
 
   async transcribe(buffer, raw) {
-    if (this.witAI_lastcallTS != null) {
-      let now = Math.floor(new Date());
-      while (now - this.witAI_lastcallTS < 1000) {
-        await this.sleep(100);
-        now = Math.floor(new Date());
+    try {
+      if (this.witAI_lastcallTS != null) {
+        let now = Math.floor(new Date());
+        while (now - this.witAI_lastcallTS < 1000) {
+          await this.sleep(100);
+          now = Math.floor(new Date());
+        }
       }
+      const extractSpeechIntent = util.promisify(witClient.extractSpeechIntent);
+      var stream = Readable.from(buffer);
+      const contenttype = "audio/raw;encoding=signed-integer;bits=16;rate=48k;endian=little"
+      var output = await extractSpeechIntent(this.WITAPIKEY, stream, contenttype);
+      this.witAI_lastcallTS = Math.floor(new Date());
+      if (raw) return output;
+      if (typeof output == "object") return output;
+      output = output.split("\n").map((item) => item.trim()).join("");
+      let idx = output.lastIndexOf("}{");
+      let idx0 = output.lastIndexOf("}");
+      output = JSON.parse(output.substring(idx + 1, idx0 + 1).trim().replace(/\n/g, "").trim());
+      output.text = output.text.replace(/\./g, "");
+      stream.destroy();
+      return output;
+    } catch(e) {
+      console.log("Transcriber-error: ", e);
+      return {}
     }
-    const extractSpeechIntent = util.promisify(witClient.extractSpeechIntent);
-    var stream = Readable.from(buffer);
-    const contenttype = "audio/raw;encoding=signed-integer;bits=16;rate=48k;endian=little"
-    var output = await extractSpeechIntent(this.WITAPIKEY, stream, contenttype);
-    this.witAI_lastcallTS = Math.floor(new Date());
-    if (raw) return output;
-    if (typeof output == "object") return output;
-    let idx = output.lastIndexOf("\r\n{\n");
-    let idx0 = output.lastIndexOf("0");
-    output = JSON.parse(output.substring(idx + 1, idx0).trim().replace(/\n/g, "").trim());
-    output.text = output.text.replace(/\./g, "");
-    stream.destroy();
-    return output;
   }
 
   listen(receiver, userId, user) {
