@@ -6,8 +6,8 @@ This transcriber was made for speech to text in discord voice calls. It uses wit
 
 To use the tool you need
 
-- to know how to [set up a Discord bot](https://discordjs.guide/) that can interact with the [voice channels](https://discordjs.guide/voice/) created using Node.JS
-- a free [API key for wit.ai](https://wit.ai)
+- to know how to [set up a Discord bot](https://discordjs.guide/) using Node.JS that can interact with [voice channels](https://discordjs.guide/voice/)
+- a free [API key for wit.ai](https://wit.ai) (found in the settings section after you created an app)
 
 ## Installation
 
