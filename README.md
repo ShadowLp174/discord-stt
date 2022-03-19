@@ -49,6 +49,10 @@ connection.receiver.speaking.on("start", (userId) => {
 
 Have Fun!
 
+## Example
+
+An example is available as a basic Discord music bot with voice commands. [GitHub](https://github.com/shadowlp174/stt-example-bot)
+
 ## API
 
 ### `.listen(AudioReceiver, userId, user)`
