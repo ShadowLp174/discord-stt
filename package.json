@@ -1,6 +1,6 @@
 {
   "name": "discord-speech-to-text",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A speech to text module for the discord voice implementation",
   "main": "transcriber.js",
   "scripts": {

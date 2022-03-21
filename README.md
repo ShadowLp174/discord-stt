@@ -29,6 +29,8 @@ const transcriber = new Transcriber(WITAIKEY);
 
 Next you have to join the voice channel with you Discord bot and apply the transcriber when someone says something.
 
+**Important: When you create your client object, you have to give it the `GUILD_VOICE_STATES` intent! Like this: `const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES] });`**
+
 ``` JavaScript
 let channel = interaction.member.guild.channels.cache.get(interaction.member.voice.channel.id);
 const connection = joinVoiceChannel({
